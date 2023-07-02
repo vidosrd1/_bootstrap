@@ -1,15 +1,13 @@
 class ArtsController < ApplicationController
   before_action :set_art, only: %i[ show edit update destroy ]
 
-  # GET /arts or /arts.json
   def index
-    @arts = Art.all.order('created_at DESC')
+    @arts = Art.all
     @pagy, @arts = pagy(Art.
       order(created_at: :desc))
     if params[:query].present?
       @arts = Art.where("name LIKE ?", "%#{params[:query]}%")
     #else
-      #@arts = Art.all
     end
 
     # Not too clean but it works!
