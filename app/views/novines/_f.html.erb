@@ -1,0 +1,28 @@
+<%= form.select :tag_id, Tag.order(:name), :id, :name %>
+
+<%= f.text_field :name,
+class: 'form-control',
+placeholder: 'New category' %>
+
+<%= form.collection_checkboxes :tag_ids,
+  Tag.all, :id, :name %>
+
+<div class="my-5">
+  <%= form.label :tag %>
+  <%= form.select :tag_id, Tag.all.collect {
+    |tag| [tag.name, tag.id]},
+    prompt: "Choose your tag"
+  #options_for_select(
+  #map { |tag|)
+  %>
+</div>
+
+<%= novine.title %>
+<div class="my-5">
+  <%= form.label :user_id %>
+  <%= form.text_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+</div>
+<p class="my-5">
+  <strong class="block font-medium mb-1">User:</strong>
+  <%= novine.user_id %>
+</p>

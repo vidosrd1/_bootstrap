@@ -1,0 +1,19 @@
+collection_
+<% if !@tags.nil? %>
+  <% @tags.each  do | tags | %>
+
+  <div style="margin-top:15px; margin-left:8px">
+     <%= link_to tags.name, "/tags"  %></div>
+  <% end %>
+<% end %>
+
+<%= novine.children_tags.first %>
+
+<strong class="block font-medium mb-1">Art:</strong>
+<%= list.art.name %>
+
+<%= form_for novine do |f| %>
+  <%= f.collection_select :tag_ids,
+    Tag.all, :id, :name %>
+  <%= f.submit %>
+<% end %>

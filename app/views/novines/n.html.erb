@@ -1,0 +1,21 @@
+<%= form_tag(novines_path, method: "get") do %>
+  <%= select_tag "tag",
+  options_from_collection_for_select(Tag.all, "name"), prompt: "Select Tag" %>
+  <%= submit_tag "Submit" %>
+<% end %>
+<%= render "form", novine: @novine %>
+<%= form.fields_for :tags do |nc| %>
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <%= nc.text_field :name,
+      class: 'form-control',
+      placeholder: 'New category' %>
+    </div>
+  </div>
+<% end %>
+
+<%= form_for @novine do |f| %>
+  <%= f.collection_select :tag_ids,
+    Tag.all, :id, :name %>
+  <%= f.submit %>
+<% end %>

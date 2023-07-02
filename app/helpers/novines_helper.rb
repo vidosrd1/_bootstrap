@@ -1,0 +1,2 @@
+module NovinesHelper
+end
