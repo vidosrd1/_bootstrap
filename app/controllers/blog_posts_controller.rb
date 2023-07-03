@@ -17,9 +17,9 @@ class BlogPostsController < ApplicationController
       render :index
     end
   rescue Pagy::OverflowError
-    redirect_to root_path(page: 1)
-    #params[:page] = 1
-    #retry
+    #redirect_to root_path(page: 1)
+    params[:page] = 1
+    retry
   end
 
   def show
