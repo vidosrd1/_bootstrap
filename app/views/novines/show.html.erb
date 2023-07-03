@@ -15,6 +15,7 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
     <h3><%= @novine.title %></h3>
+    <h6><small><%= @novine.name %></small></h6>
     <h5>
       Tags:
       <% @novine.tags.each do |tag| %>

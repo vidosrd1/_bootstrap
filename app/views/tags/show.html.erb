@@ -7,7 +7,8 @@
     <h3><%= @tag.name %></h3>
     <div style="margin-top;">
       <% @tag.novines.each do |n| %>
-        <%= n.title %><br />
+        <a href="/novines/<%= n.id %>",
+        class="nav-link"><%= n.title %></a>
         <small><%= n.name %></small>
         <hr />
       <% end %>
