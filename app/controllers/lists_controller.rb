@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
 
   def index
-    @lists = List.all.order('created_at DESC')
+    @lists = List.all#.order('created_at DESC')
     @pagy, @lists =
     pagy(@lists)
     if params[:query].present?

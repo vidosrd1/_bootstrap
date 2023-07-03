@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :tags
   resources :novines
-  resources :articles
   resources :arts
   resources :lists
   resources :categories
