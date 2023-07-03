@@ -9,7 +9,7 @@
   <br />
   <%= form_with(url: tags_path, method: :get,
   data: {turbo_frame: "tags", turbo_action: "advance"}) do |form| %>
-      <%= form.label :query, "Search by art name:",
+      <%= form.label :query, "Search by tag name:",
       class: "block mb-2" %>
       <div class="flex space-x-3">
         <%= form.text_field :query, class: "py-2 px-5 rounded border ring-0

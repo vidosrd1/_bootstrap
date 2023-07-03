@@ -5,13 +5,13 @@ class NovinesController < ApplicationController
     #if params[:tag]
     #  @tag = Tag.find_by(name: params[:tag])
     #  @novines = Novine.where(tag_id: @tag.id)
-    if params[:tag_id]
-      Tag.find(id).novines
-    else
+    #if params[:tag_id]
+    #  Tag.find(id).novines
+    #else
       @novines = Novine.all.order('created_at DESC')
     #@novine_titles = Novine.first(10)
     #@tags = Tag.all
-    end
+    #end
     #@novines = novines.includes(:children_categories)    @pagy, @novines =
     @pagy, @novines =
     pagy(@novines)
@@ -40,7 +40,7 @@ class NovinesController < ApplicationController
     #@novine = Tagging.new    #@novine.tags.build
     #@novine.novine_tags.build.build_tag
     #@tags = Tag.find(:all)
-    @tags = Tag.all
+    #@tags = Tag.all
     #novine_tag = @novine.novine_tags.build()
     #@novine_tags = @novine.tags.all
     #@novine.novine_tags.build.build_tag
