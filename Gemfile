@@ -19,8 +19,10 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 gem "image_processing", "~> 1.2"
 gem 'devise', '~> 4.9', '>= 4.9.2'
+gem "faker", "~> 3.2"
 gem 'pagy', '~> 6.0', '>= 6.0.4'
 gem 'tailwindcss-rails', '~> 2.0', '>= 2.0.29'
+gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -33,5 +35,6 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
-  gem "webdrivers"
+  gem 'webdrivers', '~> 5.3', '>= 5.3.1'
+  #gem "webdrivers"
 end

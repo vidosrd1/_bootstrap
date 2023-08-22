@@ -1,0 +1,18 @@
+<div class="w-full mx-auto max-w-3xl mt-24"">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500
+    font-medium rounded-lg inline-block" id="notice">
+    <%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Turbo uradi</h1>
+  </div>
+
+  <%= render "form", todo: Todo.new %>
+  <%= turbo_stream_from "todos" %>
+  <div id="todos" class="divide-y list-none">
+    <%= render @todos %>
+  </div>
+  <br />
+</div>

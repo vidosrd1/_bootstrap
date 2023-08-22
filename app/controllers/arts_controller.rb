@@ -3,8 +3,9 @@ class ArtsController < ApplicationController
 
   def index
     @arts = Art.all
-    @pagy, @arts = pagy(Art.
-      order(created_at: :desc))
+    #@pagy, @arts = pagy(Art.
+      #order(created_at: :desc))
+      #order(created_at: :asc))
     if params[:query].present?
       @arts = Art.where("name LIKE ?", "%#{params[:query]}%")
     #else

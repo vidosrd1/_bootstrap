@@ -1,0 +1,6 @@
+<%= turbo_stream.prepend "lists" do %>
+  <%= render "list", list: @list %>
+<% end %>
+<%= turbo_stream.replace "#{dom_id(List.new)}_form" do %>
+  <%= render "form", list: List.new %>
+<% end %>

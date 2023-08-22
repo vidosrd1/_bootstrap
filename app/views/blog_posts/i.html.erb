@@ -1,3 +1,20 @@
+<% @blog_posts.each do |blog_post| %>
+<div class="1row 1mt-4 1clearfix">
+  <div class="1col-8 1col-sm-8
+  1col-md-9 1col-lg-9">
+  <h5 class="1mt-0 1mb-1">
+    <a href="/blog_posts/<%= blog_post.id %>",
+    class="nav-link"><%= blog_post.title %></a>
+  </h5>
+  <time class="dateline text-muted" role="" itemprop="datePublished" datetime="28.03.2023 09:13" data-timestamp="1679987580">
+    <small><%= blog_post.publish %></small>
+  </time>
+  <%= truncate(strip_tags(blog_post.body.to_s), length:180) %>
+  </div>
+</div>
+<hr />
+<% end %>
+
 <% if @pagy.count > @pagy.items %>
 <div class="mt-10">
   <%= pagy_nav(@pagy) %>

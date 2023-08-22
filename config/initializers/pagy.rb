@@ -14,7 +14,7 @@
 # Instance variables
 # See https://ddnexus.github.io/pagy/docs/api/pagy#instance-variables
 Pagy::DEFAULT[:page]   = 1                                  # default
-Pagy::DEFAULT[:items]  = 10                                # default
+Pagy::DEFAULT[:items]  = 7                                # default
 # Pagy::DEFAULT[:outset] = 0                                  # default
 
 
@@ -71,7 +71,7 @@ Pagy::DEFAULT[:cycle]      = true                            # example
 
 # Countless extra: Paginate without any count, saving one query per rendering
 # See https://ddnexus.github.io/pagy/docs/extras/countless
-# require 'pagy/extras/countless'
+require 'pagy/extras/countless'
 # Pagy::DEFAULT[:countless_minimal] = false   # default (eager loading)
 
 # Elasticsearch Rails extra: Paginate `ElasticsearchRails::Results` objects

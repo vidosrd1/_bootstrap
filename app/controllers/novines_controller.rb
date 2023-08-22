@@ -1,17 +1,23 @@
 class NovinesController < ApplicationController
   before_action :set_novine, only: %i[ show edit update destroy ]
 
+  def is_user_admin
+    redirect_to(action: :index) unless
+    current_user.try(:is_admin?)
+    return false
+  end
+
   def index
     #if params[:tag]
     #  @tag = Tag.find_by(name: params[:tag])
     #  @novines = Novine.where(tag_id: @tag.id)
-    #if params[:tag_id]
-    #  Tag.find(id).novines
-    #else
+    if params[:tag_id]
+      Tag.find(id).novines
+    else
       @novines = Novine.all.order('created_at DESC')
     #@novine_titles = Novine.first(10)
     #@tags = Tag.all
-    #end
+    end
     #@novines = novines.includes(:children_categories)    @pagy, @novines =
     @pagy, @novines =
     pagy(@novines)
@@ -40,7 +46,7 @@ class NovinesController < ApplicationController
     #@novine = Tagging.new    #@novine.tags.build
     #@novine.novine_tags.build.build_tag
     #@tags = Tag.find(:all)
-    #@tags = Tag.all
+    @tags = Tag.all
     #novine_tag = @novine.novine_tags.build()
     #@novine_tags = @novine.tags.all
     #@novine.novine_tags.build.build_tag
@@ -85,7 +91,8 @@ class NovinesController < ApplicationController
   def update
     respond_to do |format|
       if @novine.update(novine_params)
-        format.html { redirect_to novine_url(@novine), notice: "Novine was successfully updated." }
+        format.html { redirect_to list_url(@novine),
+          notice: "Novine was successfully updated." }
         format.json { render :show, status: :ok, location: @novine }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -104,6 +111,14 @@ class NovinesController < ApplicationController
   end
 
   private
+    def create_or_delete_novines_tags(novine, tags)
+      post.taggables.destroy_all
+      tags = tags.strip.split(',')
+      tags.each do |tag|
+        novine.tags << Tag.find_or_create_by(name: tag)
+      end
+    end
+
     def set_novine
       @novine = Novine.find(params[:id])
       #@novines = novines.includes(:children_categories)

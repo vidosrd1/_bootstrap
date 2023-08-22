@@ -1,0 +1,23 @@
+<% @lists.each do |list| %>
+<div class="row  mt-4 clearfix">
+  <div class="col-8 col-sm-8 col-md-9 col-lg-9">
+    <h5 class="mt-0 mb-1">
+      <a href="/lists/<%= list.id %>",
+      class="nav-link"><%= list.title %></a>
+    </h5>
+    <strong class="block font-medium mb-1">Art:</strong>
+    <%= list.art.name %>
+    <br/>
+    <time class="dateline text-muted" role="" itemprop="datePublished" datetime="28.03.2023 09:13" data-timestamp="1679987580">
+      <small><%= list.publish %></small>
+    </time>
+    <%= truncate(strip_tags(list.body.to_s), length:180) %>
+  </div>
+  <div class="col-4 col-sm-4 col-md-3 col-lg-3 clearfix">
+    <% if list.image.attached? %>
+      <%= link_to image_tag(list.image,
+      style:"width:200px; heigh:auto"), list.image %>
+    <% end %>
+  </div>
+</div>
+<% end %>

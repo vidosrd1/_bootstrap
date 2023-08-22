@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :todos
   get 'home/index'
   resources :tags
   resources :novines
@@ -11,4 +12,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :blog_posts
   # root "articles#index"
+  #root "todos#index" # add this line
 end

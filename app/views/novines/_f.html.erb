@@ -1,3 +1,13 @@
+<%= form.fields_for :tags do |nc| %>
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <%= nc.text_field :name,
+      class: 'form-control',
+      placeholder: 'New category' %>
+    </div>
+  </div>
+<% end %>
+
 <%= form.select :tag_id, Tag.order(:name), :id, :name %>
 
 <%= f.text_field :name,

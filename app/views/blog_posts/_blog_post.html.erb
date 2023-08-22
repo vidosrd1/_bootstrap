@@ -1,23 +1,30 @@
-<div id="<%= dom_id blog_post %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= link_to blog_post.title, blog_post_path(blog_post),
-    class: "text-orange-600 underline hover:text-orange-700" %>
-  </p>
+<!-- app/views/todos/_todo.html.erb -->
+<li class="navbar-nav me-auto mb-2 mb-lg-0 nav-item"
+id="<%= "#{dom_id(blog_post)}_item" %>" class="py-3">
+  <%= turbo_frame_tag dom_id(blog_post) do %>
+    <div class="flex items-center justify-between">
+      <%= link_to blog_post.title, edit_blog_post_path(blog_post),
+      class: "flex-1 #{"line-through opacity-50" if blog_post.complete?}" %>
+      <%= link_to blog_post.publish, edit_blog_post_path(blog_post),
+      class: "flex-1 #{"line-through opacity-50" if blog_post.complete?}" %>
+      <%= link_to blog_post.body, edit_blog_post_path(blog_post),
+      class: "flex-1 #{"line-through opacity-50" if blog_post.complete?}" %>
+      <div class="flex items-center space-x-3">
+        <% if blog_post.complete? %>
+          <%= button_to "Srđan nepotpuna", blog_post_path(blog_post, blog_post: {
+status: 'incomplete'}), method: :patch, class: "bg-neutral-50 px-3 py-2 rounded
+inline-flex items-center justify-center text-neutral-600" %>
+        <% else %>
+          <%= button_to "Srđan kompletan", blog_post_path(blog_post,
+          blog_post: { status: 'complete'}), method:
+:patch, class: "bg-green-50 px-3 py-2 rounded inline-flex items-center
+justify-center text-green-600" %>
+        <% end %>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Publish at:</strong>
-    <%= blog_post.publish %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
-    <%= blog_post.body %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this blog post", blog_post, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this blog post', edit_blog_post_path(blog_post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+        <%= button_to "Delete", blog_post_path(blog_post),
+        method: :delete, class: "bg-red-50 px-3 py-2 rounded
+        inline-flex items-center justify-center text-red-600" %>
+      </div>
+    </div>
   <% end %>
-</div>
+</li>

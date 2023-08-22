@@ -1,0 +1,55 @@
+<h1>Novine#edit</h1>
+<p>Find me in app/views/articles/new.html.erb</p>
+<%= form_for @novine do |f| %>
+    <% if @novine.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@novine.errors.count, "error") %> prohibited this article from being saved:</h2>
+          <ul>
+            <% @novine.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="my-5">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "block shadow rounded-md
+      border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+    <div class="field">
+      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+      <%= f.text_field :tag_list %>
+    </div>
+
+    <div>
+      <%= form.label :image, style: "display: block" %>
+      <%= form.file_field :image %>
+    </div>
+
+    <div style="margin-top:20px">
+      <%= form.fields_for :tags do |t| %>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <%= t.text_field :name,
+          class: 'form-control',
+          placeholder: 'New category' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :publish %>
+      <%= form.date_field :publish, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.rich_text_area :body %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

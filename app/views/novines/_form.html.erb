@@ -32,15 +32,18 @@
     <%= form.text_field :tag_names %>
   </p>
   <div>
-    <%= form.fields_for :tags do |nc| %>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <%= nc.text_field :name,
-          class: 'form-control',
-          placeholder: 'New category' %>
-        </div>
-      </div>
+    <%= tag.taggable.each do |tagging| %>
+      <h2>Novine:</h2>
+      <%= render 'novines/novine', novine: taggable.novine %>
+      <%= link_to "ead More", taggable.novine %>
+      <hr />
     <% end %>
+    <strong class="block font-medium mb-1">
+      Tags:</strong>
+      <%= novine.tags.each do |tag| %>
+        <%= link_to tag, style: "text-deciration:none" do %>
+        <spat class="tag" %>
+      <% end %>
   </div>
 
   <div class="my-5">

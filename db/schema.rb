@@ -1,16 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# This file is the source Rails uses to define your schema when running `bin/rails
-# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
-# be faster and is potentially less error prone than running all of your
-# migrations from scratch. Old migrations may fail to apply correctly if those
-# migrations use external dependencies or application code.
-#
-# It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema[7.0].define(version: 2023_06_28_184802) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_01_090806) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -47,14 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_184802) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.string "name"
-    t.date "publish"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "arts", force: :cascade do |t|
@@ -109,8 +89,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_184802) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "taggings", ["novine_id"], :name => "index_taggings_on_novine_id"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.string "title"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

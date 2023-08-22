@@ -5,6 +5,63 @@
     <% end %>
 
     <h3><%= @art.name %></h3>
+    <div style="margin-top;">
+      <div class="main fix">
+        <div class="twoOneRow">
+          <div id="topListScroller301">
+            <div class="newsBlockNew scrollerContent">
+              <div class="scrollerElement">
+                <a class="largeThumb"
+                href="/arts/<% @art.id %>/<% @art.lists.last %>"
+                class="strip img-fluid" tentacle-id="5243898-8f"
+                alt="<% @art.lists.last.title %>"
+                title="<% @art.lists.last.title %>"
+                <% if @art.lists.last.image.attached? %>
+                  <%= link_to image_tag(@art.lists.last.image,
+                  style:"width:480px; heigh:auto; nav-link; nav-right;"),
+                  @art.lists.last.image %>
+                <% end %>
+                </a>
+                <div class="strip">
+                  <h6>
+                  <a href="/tags/<% @art.id %>/<% @art.lists.last.title %>"
+                  tentacle-id="5243898-90">
+                  <%= @art.lists.last.title %></a>
+                  </h6>
+                  <div class="newsTextNew newsTitle">
+                    <a tentacle-id="5243898-90" href="/arts/
+                    <% @art.id %>/<% @art.lists.last.body %>">
+                    <time class="dateline text-muted" role="" itemprop="datePublished" datetime="28.03.2023 09:13" data-timestamp="1679987580">
+                      <small><%= @art.lists.last.publish %></small>
+                    </time>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="">
+      <% @art.lists.each do |n| %>
+      <div class="row  mt-4 clearfix">
+        <div class="col-8 col-sm-8 col-md-9 col-lg-9">
+        <a href="/lists/<%= n.id %>",
+        class="nav-link"><%= n.title %></a>
+        </div>
+        <div class="col-4 col-sm-4 col-md-3 col-lg-3 clearfix">
+        <% if n.image.attached? %>
+          <%= link_to image_tag(n.image,
+          style:"width:100px; heigh:auto; nav-link; nav-right;"),
+          n.image %>
+        <% end %>
+        </div>
+      </div>
+      <hr />
+      <% end %>
+    </div>
 
     <%= link_to 'Edit this art', edit_art_path(@art), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">

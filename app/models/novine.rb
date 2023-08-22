@@ -9,7 +9,7 @@ class Novine < ApplicationRecord
   #class_name: 'Tagging',
   :dependent => :destroy
 
-  has_and_belongs_to_many :tags
+  #has_and_belongs_to_many :tags
   has_many :tags,
   :through => :taggings
   #through: :taggings,
@@ -29,15 +29,6 @@ accepts_nested_attributes_for :taggings
   has_rich_text :body
   #attr_accessor :tag_list
   attr_accessor :tagging_id
-  before_validation :check_for_newly_installed_template
-  def check_for_newly_installed_template
-    if tagging_id.present?
-      novine = Novine.find tagging_id
-      if novine.present? and not novines.include?(novine)
-        self.novines << novine
-      end
-    end
-  end
 
   def image_as_thumbnail
     return unless image.content_type.in?(%w[image/jpeg image/png image/jpg])

@@ -1,0 +1,6 @@
+<%= turbo_stream.prepend "blog_posts" do %>
+  <%= render "blog_post", todo: @blog_post %>
+<% end %>
+<%= turbo_stream.replace "#{dom_id(Blog_post.new)}_form" do %>
+  <%= render "form", todo: Blog_post.new %>
+<% end %>

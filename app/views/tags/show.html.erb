@@ -3,14 +3,54 @@
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-
     <h3><%= @tag.name %></h3>
     <div style="margin-top;">
+      <div class="main fix">
+        <div class="twoOneRow">
+          <div id="topListScroller301">
+            <div class="newsBlockNew scrollerContent">
+              <div class="scrollerElement">
+                <a class="largeThumb"
+                href="/tags/<% @tag.id %>/<% @tag.novines.last %>"
+                class="strip img-fluid" tentacle-id="5243898-8f"
+                alt="<% @tag.novines.last.title %>"
+                title="<% @tag.novines.last.title %>">
+                <% @tag.novines.last.title %>
+                </a>
+                <div class="strip">
+                  <h6>
+                    <% if @tag.novines.last.image.attached? %>
+                      <%= link_to image_tag(@tag.novines.last.image,
+                      style:"width:480px; heigh:auto; nav-link; nav-right;"),
+                      @tag.novines.last.image %>
+                    <% end %>
+                  </h6>
+                  <div class="newsTextNew newsTitle">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
       <% @tag.novines.each do |n| %>
+      <div class="row  mt-4 clearfix">
+        <div class="col-8 col-sm-8 col-md-9 col-lg-9">
         <a href="/novines/<%= n.id %>",
         class="nav-link"><%= n.title %></a>
         <small><%= n.name %></small>
-        <hr />
+        </div>
+        <div class="col-4 col-sm-4 col-md-3 col-lg-3 clearfix">
+        <% if n.image.attached? %>
+          <%= link_to image_tag(n.image,
+          style:"width:100px; heigh:auto; nav-link; nav-right;"),
+          n.image %>
+        <% end %>
+        </div>
+      </div>
+      <hr />
       <% end %>
     </div>
 

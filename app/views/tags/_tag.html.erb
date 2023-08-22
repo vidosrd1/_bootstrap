@@ -4,6 +4,14 @@
     <%= tag.name %>
   </p>
 
+  <%= tag.taggable.each do |tagging| %>
+    <h2>Novine:</h2>
+    <%= render 'novines/novine',
+      novine: taggable.novine %>
+    <%= link_to "Read More", taggable.novine %>
+    <hr />
+  <% end %>
+
   <% if action_name != "show" %>
     <%= link_to "Show this tag", tag, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this tag', edit_tag_path(tag), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

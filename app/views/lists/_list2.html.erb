@@ -1,0 +1,23 @@
+<!-- app/views/todos/_todo.html.erb -->
+<li class="navbar-nav me-auto mb-2 mb-lg-0 nav-item"
+id="<%= "#{dom_id(list)}_item" %>" class="py-3">
+  <%= turbo_frame_tag dom_id(list) do %>
+    <div class="flex items-center justify-between">
+      <%= link_to list.title, edit_list_path(list),
+      class: "flex-1 #{"line-through opacity-50" if list.complete?}" %>
+      <div class="flex items-center space-x-3">
+        <% if list.complete? %>
+          <%= button_to "List nepotpuna", list_path(list, todo: {
+status: 'incomplete'}), method: :patch, class: "bg-neutral-50 px-3 py-2 rounded
+inline-flex items-center justify-center text-neutral-600" %>
+        <% else %>
+          <%= button_to "List kompletan", list_path(list, todo: { status: 'complete'}), method:
+:patch, class: "bg-green-50 px-3 py-2 rounded inline-flex items-center
+justify-center text-green-600" %>
+        <% end %>
+
+        <%= button_to "Delete", list_path(list), method: :delete, class: "bg-red-50 px-3 py-2 rounded inline-flex items-center justify-center text-red-600" %>
+      </div>
+    </div>
+  <% end %>
+</li>

@@ -1,0 +1,47 @@
+<%= form_with(model: list, class: "contents") do |form| %>
+  <% if list.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+        <% list.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-6">
+    <%= form.label :title, class: "sr-only" %>
+    <div class="relative">
+      <%= form.text_field :title, class: "block shadow-sm rounded-full border
+      border-gray-200 outline-none px-6 py-3 w-full focus:border-sky-300
+      focus:outline-none focus:ring-4 focus:ring-sky-50 text-lg
+      placeholder:text-gray-400", placeholder: "Add a new todo" %>
+    </div>
+    <%= form.label :image, style: "display: block" %>
+    <div class="relative">
+      <%= form.file_field :image %>
+    </div>
+    <%= form.label :art %>
+    <div class="my-5">
+      <%= form.select :art_id,
+      options_for_select(Art.all.map { |art|
+         [art.name, art.id]})%>
+    </div>
+    <%= form.label :publish %>
+    <div class="my-5">
+      <%= form.date_field :publish, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+    <%= form.label :body %>
+    <div class="my-5">
+      <%= form.rich_text_area :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+    <div class="absolute top-0 right-0">
+      <%= form.submit class: "mt-px rounded-full py-4 px-5 bg-sky-500
+      0text-white
+      font-medium cursor-pointer border-2 border-sky-500 hover:bg-sky-600
+      hover:border-sky-600" %>
+    </div>
+  </div>
+<% end %>

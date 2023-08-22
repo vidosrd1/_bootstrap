@@ -16,7 +16,12 @@
   <% end %>
   <hr />
   <p>
-    <strong class="block font-medium mb-1">Tags:</strong>
+    <strong class="block font-medium mb-1">
+      Tags:</strong>
+      <%= novine.tags.each do |tag| %>
+        <%= link_to tag, style: "text-deciration:none" do %>
+        <spat class="tag" %>
+      <% end %>
     <%= novine.tag_names %>
   </p>
   <p class="my-5">

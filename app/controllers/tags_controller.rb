@@ -7,7 +7,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    @novines = @tag.novines
+    @novines = @tag.novines.order('created_at DESC')
   end
 
   # GET /tags/new

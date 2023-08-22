@@ -1,33 +1,52 @@
-<%= form_with(model: blog_post, class: "contents") do |form| %>
-  <% if blog_post.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(blog_post.errors.count, "error") %> prohibited this blog_post from being saved:</h2>
+<!-- app/views/todos/_form.html.erb -->
+<%= form_with(model: blog_post, data: { turbo: false }, id: "#{dom_id(blog_post)}_form") do |form| %>
+<% if blog_post.errors.any? %>
+<div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+  <h2>
+    <%= pluralize(blog_post.errors.count, "error") %> prohibited this todo from being
+    saved:
+  </h2>
+  <ul>
+    <% blog_post.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-      <ul>
-        <% blog_post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+<div class="mb-6">
+  <%= form.label :title, class: "sr-only" %>
+  <div class="relative">
+    <%= form.text_field :title, class: "block shadow-sm rounded-full border
+    border-gray-200 outline-none px-6 py-3 w-full focus:border-sky-300
+    focus:outline-none focus:ring-4 focus:ring-sky-50 text-lg
+    placeholder:text-gray-400", placeholder: "Add a new blog post" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :publish_at %>
-    <%= form.date_field :publish_at, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <%= form.label :publish_at %>
+  <div class="relative">
+    <%= form.date_field :publish_at,
+    class: "block shadow-sm rounded-full border
+    border-gray-200 outline-none px-6 py-3 w-full focus:border-sky-300
+    focus:outline-none focus:ring-4 focus:ring-sky-50 text-lg
+    placeholder:text-gray-400" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :body %>
-    <%= form.rich_text_area :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <%= form.label :body %>
+  <div class="relative">
+    <%= form.rich_text_area :body,
+    class: "block shadow-sm rounded-full border
+    border-gray-200 outline-none px-6 py-3 w-full focus:border-sky-300
+    focus:outline-none focus:ring-4 focus:ring-sky-50 text-lg
+    placeholder:text-gray-400" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5
-    bg-blue-600 1text-white inline-block font-medium cursor-pointer" %>
+  <div class="absolute top-0 right-0">
+    <%= form.submit class: "mt-px rounded-full py-4 px-5 bg-sky-500
+      1text-white
+      font-medium cursor-pointer border-2 border-sky-500 hover:bg-sky-600
+      hover:border-sky-600" %>
   </div>
+</div>
+
 <% end %>

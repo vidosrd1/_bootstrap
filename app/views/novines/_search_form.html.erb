@@ -1,0 +1,8 @@
+<%= search_form_for @q do |f| %>
+
+  <%= f.search_field :title_or_body_or_name_cont,
+  placeholdet: "Search..." %>
+
+  <%= f.submit "Search!" %>
+
+<% end %>
