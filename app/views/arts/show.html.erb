@@ -24,13 +24,15 @@
                 </a>
                 <div class="strip">
                   <h6>
-                  <a href="/tags/<% @art.id %>/<% @art.lists.last.title %>"
+                  <a tentacle-id="5243898-90" class="navbar navbar-nav nav-item nav-link"
+                  href="/lists/<%= @art.lists.last.id %>"
                   tentacle-id="5243898-90">
                   <%= @art.lists.last.title %></a>
                   </h6>
                   <div class="newsTextNew newsTitle">
-                    <a tentacle-id="5243898-90" href="/arts/
-                    <% @art.id %>/<% @art.lists.last.body %>">
+                    <a tentacle-id="5243898-90"
+                    class="nav-link"
+                    href="/lists/<%= @art.lists.last.id %>">
                     <time class="dateline text-muted" role="" itemprop="datePublished" datetime="28.03.2023 09:13" data-timestamp="1679987580">
                       <small><%= @art.lists.last.publish %></small>
                     </time>

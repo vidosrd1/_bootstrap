@@ -4,6 +4,11 @@
     <%= link_to list.title, list_path(list),
     class: "text-orange-600 underline hover:text-orange-700" %>
   </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= link_to list.name, list_path(list),
+    class: "text-orange-600 underline hover:text-orange-700" %>
+  </p>
   <hr />
   <% if list.image.content_type.in?(%w[image/jpeg image/png image/jpg]) %>
     <%= link_to image_tag(list.image,
@@ -16,6 +21,27 @@
   </p>
   <hr />
   <%= list.body %>
+  <hr />
+  <% if list.pictures.attached? %>
+    <% list.pictures.each do |attachment| %>
+      <% if attachment.image? %>
+        <%= image_tag attachment, width: "200px" %>
+      <% elsif attachment.audio? %>
+        <audio controls>
+          <source src="<%= rails_blob_url(attachment) %>"
+            type="<%= attachment.content_type %>" />
+        </audio>
+      <% elsif attachment.video? %>
+        <video controls width="720">
+          <source src="<%= rails_blob_url(attachment) %>"
+            type="<%= attachment.content_type %>" />
+        </video>
+      <% else %>
+        <%= link_to attachment.filename,
+        rails_blob_path(attachment, disposition: "attachment") %>
+      <% end %>
+    <% end %>
+  <% end %>
   <hr />
   <% if action_name != "show" %>
     <%= link_to "Show this list", list, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
