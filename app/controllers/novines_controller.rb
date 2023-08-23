@@ -22,7 +22,7 @@ class NovinesController < ApplicationController
     @pagy, @novines =
     pagy(@novines)
     if params[:query].present?
-      @ovines = Novine.where("title LIKE ?", "%#{params[:query]}%")
+      @novines = Novine.where("title LIKE ?", "%#{params[:query]}%")
     end
 
     if turbo_frame_request?
