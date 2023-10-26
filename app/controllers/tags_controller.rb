@@ -1,8 +1,21 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: %i[ show edit update destroy ]
 
+  def all_children2(level=0)
+    children_array = []
+    level +=1
+      #must use "all" otherwise ActiveRecord returns a relationship, not the array itself
+    self.children.all.each do |child|
+      children_array << "&nbsp;" * level + tag.name
+      children_array << child.all_children2(level)
+    end
+      #must flatten otherwise we get an array of arrays. Note last action is returned by default
+    children_array = children_array.flatten
+  end
+
   def index
     @tags = Tag.all
+    @tag= Tag.new
   end
 
   def show
@@ -10,16 +23,13 @@ class TagsController < ApplicationController
     @novines = @tag.novines.order('created_at DESC')
   end
 
-  # GET /tags/new
   def new
     @tag = Tag.new
   end
 
-  # GET /tags/1/edit
   def edit
   end
 
-  # POST /tags or /tags.json
   def create
     @tag = Tag.new(tag_params)
 
@@ -34,7 +44,6 @@ class TagsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tags/1 or /tags/1.json
   def update
     respond_to do |format|
       if @tag.update(tag_params)
@@ -47,7 +56,6 @@ class TagsController < ApplicationController
     end
   end
 
-  # DELETE /tags/1 or /tags/1.json
   def destroy
     @tag.destroy
 
@@ -58,13 +66,11 @@ class TagsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_tag
       @tag = Tag.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def tag_params
-      params.require(:tag).permit(:name)
+      params.require(:tag).permit(:name, :parent_id)
     end
 end

@@ -13,8 +13,7 @@ class ListsController < ApplicationController
     #  %w[incomplete complete])
     #@pagy, @lists = pagy(collection, params: ->(params)
     #{ params.except('not_useful').merge!('custom' => 'useful') })
-    @pagy, @lists =
-    pagy(@lists)
+    @pagy, @lists = pagy(@lists)
     if params[:query].present?
       @lists = List.where("title LIKE ?", "%#{params[:query]}%")
     end

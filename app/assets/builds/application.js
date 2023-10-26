@@ -6806,7 +6806,7 @@
       clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
         this.element.requestSubmit();
-      }, 200);
+      }, 500);
     }
   };
 

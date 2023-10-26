@@ -1,10 +1,42 @@
-alt="<% @tag.novines.last.title %>"
-title="<% @tag.novines.last.title %>"
+<select>
+  <option></option>
+  <% root_tags.each do |tag| %>
+    <option><%=tag.name%></option>
+    <% category.all_children2.each do |child| %>
+      <option><%=child.html_safe%></option>
+    <% end %>
+  <% end %>
+</select>
+
 <% if @tag.novines.last.image.attached? %>
   <%= link_to image_tag(@tag.novines.last.image,
   style:"width:480px; heigh:auto; nav-link; nav-right;"),
   @tag.novines.last.image %>
 <% end %>
+<h5><%= @tag.select(:parent_id,options_for_select(tag_options_array), {}, class: 'form-control') %>
+</h5>
+
+<% if @tag.novines.last.image.attached? %>
+<a class="largeThumb"
+href="/novines/<%= @tag.novines.last.id %>"
+class="strip img-fluid" tentacle-id="5243898-8f"
+alt="<% @tag.novines.last.title %>"
+title="<% @tag.novines.last.title %>">
+<% image_tag(@tag.novines.last.image,
+  style:"width:480px; heigh:auto; nav-link; nav-right;") %>
+<% end %>
+  <% @tag.novines.last.title %>
+</a>
+<% if @article.image.attached? %>
+<%= link_to image_tag(@article.image,
+style:"width:640px; heigh:auto"), @article.image %>
+<% end %>
+<%= image_tag(@tag.novines.last.image, class: 'novine-image__img')
+if @tag.novines.last.image.attached? %>
+<% image_tag(@tag.novines.last.image,
+  style:"width:480px; heigh:auto; nav-link; nav-right;") %>                    <% end %>
+alt="<% @tag.novines.last.title %>"
+title="<% @tag.novines.last.title %>"
 <a href="/tags/<% @tag.id %>/<% @tag.novines.last.title %>"
   <%= @tag.novines.last.title %></a>
   <a tentacle-id="5243898-90" href="/tags/

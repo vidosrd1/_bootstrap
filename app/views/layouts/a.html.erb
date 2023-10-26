@@ -1,4 +1,26 @@
 <li class="nav-item">
+  <%= link_to 'Tag', tags_path,
+  class: "nav-link" %>
+</li>
+<li class="nav-item">
+  <%= link_to 'Novine', novines_path,
+  class: "nav-link" %>
+</li>
+<li class="nav-item">
+  <%= link_to 'Categories', categories_path,
+  class: "nav-link" %>
+</li>
+<li class="nav-item">
+  <%= link_to 'Blogs', blogs_path,
+  class: "nav-link" %>
+</li>
+Rat u Ukrajini
+<%= button_to(
+  "Log Out",
+  destroy_user_session_path,
+  method: :delete
+) %>
+<li class="nav-item">
   <%= link_to 'Blog posts', blog_posts_path,
   class: "nav-link" %>
 </li>

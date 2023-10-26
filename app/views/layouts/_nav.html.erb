@@ -10,12 +10,19 @@
           <a class="nav-link active" aria-current="page" href="/home/index">Home</a>
         </li>
         <li class="nav-item">
-          <%= link_to 'Categories', categories_path,
-          class: "nav-link" %>
+          <a class="nav-link" aria-current="page" href="/tags/1">Sport</a>
         </li>
         <li class="nav-item">
-          <%= link_to 'Blogs', blogs_path,
-          class: "nav-link" %>
+          <a class="nav-link" aria-current="page" href="/tags/9">Muzika</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/tags/3">Kultura</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/tags/4">Politika</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/tags/5">Svijet</a>
         </li>
         <li class="nav-item">
           <%= link_to 'Arts', arts_path,
@@ -26,10 +33,6 @@
           class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'Tag', tags_path,
-          class: "nav-link" %>
-        </li>
         <li class="nav-item">
           <%= link_to 'Novine', novines_path,
           class: "nav-link" %>
@@ -46,11 +49,8 @@
                edit_user_registration_path, class:'nav-link' %>
             </li>
             <li class="dropdown-item">
-              <%= button_to(
-                "Log Out",
-                destroy_user_session_path,
-                method: :delete
-              ) %>
+              <%= link_to "Sign out", destroy_user_session_path,
+              method: :delete, data: { turbo_method: :delete } %>
             <% else %>
             <li>
               <%= link_to "Sign In",

@@ -38,7 +38,7 @@ class NovinesController < ApplicationController
   end
 
   def show
-    #@novine = Novine.find(params[:id])
+    @novine = Novine.find(params[:id])
   end
 
   def new
@@ -63,10 +63,13 @@ class NovinesController < ApplicationController
   end
 
   def edit
+    @novine = Novine.find(params[:id])
   end
 
   def create
-    @novine = Novine.new(novine_params)
+    @novine = Novine.new(novine_params.except(:tags))
+    create_or_delete_novines_tags(
+      @novine, params[:novine][:tags],)
     #tag_arr = params[:tag].split(',')
 
     #Novine.transaction do
@@ -89,6 +92,8 @@ class NovinesController < ApplicationController
   end
 
   def update
+    create_or_delete_novines_tags(
+      @novine, params[:novine][:tags],)
     respond_to do |format|
       if @novine.update(novine_params)
         format.html { redirect_to list_url(@novine),

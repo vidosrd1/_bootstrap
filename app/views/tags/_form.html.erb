@@ -16,6 +16,10 @@
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
+  <%= form.select(:parent_id,
+  options_for_select(tag_options_array), {},
+  class: 'form-control') %>
+
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600
     1text-white inline-block font-medium cursor-pointer" %>

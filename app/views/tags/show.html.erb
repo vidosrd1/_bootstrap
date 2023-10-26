@@ -10,22 +10,27 @@
           <div id="topListScroller301">
             <div class="newsBlockNew scrollerContent">
               <div class="scrollerElement">
-                <a class="largeThumb"
-                href="/tags/<% @tag.id %>/<% @tag.novines.last %>"
-                class="strip img-fluid" tentacle-id="5243898-8f"
-                alt="<% @tag.novines.last.title %>"
-                title="<% @tag.novines.last.title %>">
-                <% @tag.novines.last.title %>
-                </a>
                 <div class="strip">
+                  <a href="/novines/<%= @tag.novines.last.id %>",
+                  class="nav-link"><%= @tag.novines.last.title %></a>
+                  <br />
                   <h6>
+                    <div class="col-8 col-sm-8 col-md-9 col-lg-9">
                     <% if @tag.novines.last.image.attached? %>
                       <%= link_to image_tag(@tag.novines.last.image,
                       style:"width:480px; heigh:auto; nav-link; nav-right;"),
                       @tag.novines.last.image %>
                     <% end %>
+                    </div>
                   </h6>
                   <div class="newsTextNew newsTitle">
+                    <a class="largeThumb"
+                    href="/novines/<%= @tag.novines.last.id %>"
+                    class="strip img-fluid" tentacle-id="5243898-8f"
+                    alt="<% @tag.novines.last.title %>"
+                    title="<% @tag.novines.last.title %>">
+                    <% @tag.novines.last.title %>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -34,6 +39,7 @@
         </div>
       </div>
     </div>
+    <hr />
     <div>
       <% @tag.novines.each do |n| %>
       <div class="row  mt-4 clearfix">
