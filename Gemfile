@@ -2,10 +2,10 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
-gem "rails", "~> 7.0.5"
+gem 'rails', '~> 8.0', '>= 8.0.2'
 gem "sprockets-rails"
-gem "sqlite3", "~> 1.4"
-gem "puma", "~> 5.0"
+gem 'sqlite3', '~> 2.6'
+gem 'puma', '~> 6.6'
 gem "jsbundling-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
@@ -17,12 +17,12 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "sassc-rails"
-gem "image_processing", "~> 1.2"
-gem 'devise', '~> 4.9', '>= 4.9.2'
-gem "faker", "~> 3.2"
-gem 'pagy', '~> 6.0', '>= 6.0.4'
-gem 'tailwindcss-rails', '~> 2.0', '>= 2.0.29'
-gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
+gem 'image_processing', '~> 1.14'
+gem 'devise', '~> 4.9', '>= 4.9.4'
+gem 'faker', '~> 3.5', '>= 3.5.1'
+gem 'pagy', '~> 8.6', '>= 8.6.3'
+gem 'tailwindcss-rails', '~> 4.2', '>= 4.2.1'
+gem 'acts-as-taggable-on', '~> 12.0'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

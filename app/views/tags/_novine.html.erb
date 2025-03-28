@@ -3,6 +3,12 @@
     <div class="1collapse navbar-collapse flex justify-between items-center" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% @tags.each do |tag| %>
+          <%= link_to tag.name, tag %>
+          <% tag.novine_titles.each do |novine| %>
+            <%= link_to novine.title, novine %>
+          <% end %>
+        <% end %>
+        <% @tags.each do |tag| %>
         <li class="nav-item">
           <h5>
             <strong class="block font-medium mb-1">
