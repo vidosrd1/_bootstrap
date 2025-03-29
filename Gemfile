@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.2"
-gem 'rails', '~> 8.0', '>= 8.0.2'
+ruby "3.4.1"
+gem 'rails', '~> 8.0.2'
 gem "sprockets-rails"
 gem 'sqlite3', '~> 2.6'
 gem 'puma', '~> 6.6'
