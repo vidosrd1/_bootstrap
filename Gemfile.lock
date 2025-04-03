@@ -298,7 +298,7 @@ DEPENDENCIES
   jsbundling-rails
   pagy (~> 8.6, >= 8.6.3)
   puma (~> 6.6)
-  rails (~> 8.0, >= 8.0.2)
+  rails (~> 8.0.2)
   sassc-rails
   selenium-webdriver
   sprockets-rails
@@ -311,7 +311,7 @@ DEPENDENCIES
   webdrivers (~> 5.3, >= 5.3.1)
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.4.1p0
 
 BUNDLED WITH
    2.4.13
