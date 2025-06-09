@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.4.1"
+ruby "3.4.4"
 gem 'rails', '~> 8.0.2'
 gem "sprockets-rails"
 gem 'sqlite3', '~> 2.6'
@@ -21,8 +21,9 @@ gem 'image_processing', '~> 1.14'
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'faker', '~> 3.5', '>= 3.5.1'
 gem 'pagy', '~> 8.6', '>= 8.6.3'
+#gem 'pagy', '~> 9.3', '>= 9.3.4'
 gem 'tailwindcss-rails', '~> 4.2', '>= 4.2.1'
-gem 'acts-as-taggable-on', '~> 12.0'
+#gem 'acts-as-taggable-on', '~> 12.0'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

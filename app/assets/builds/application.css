@@ -86,14 +86,6 @@
     scroll-behavior: smooth;
   }
 }
-.tag {
-  background: #0045c6;
-  color: #DDD;
-  padding: 0.5em;
-  margin: 0.5em;
-  border-radius: 0.25em;
-  display: inline-block;;
-}
 
 body {
   margin: 0;
